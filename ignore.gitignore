@@ -1,0 +1,57 @@
+
+# Archivos Java - Ignorar .jar y otros relacionados
+*.jar
+*.war
+*.ear
+*.class
+*.log
+
+# Archivos Python - Ignorar .pyc, entornos virtuales y más
+*.py[cod]
+*.pyo
+*.so
+*.egg
+*.egg-info
+__pycache__/
+venv/
+env/
+.python-version
+
+# Archivos de log - Todos los tipos
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+*.log.*
+log/
+logs/
+
+# Directorios temporales
+/temp
+tmp/
+temp/
+build/
+out/
+dist/
+
+# Archivos del sistema y IDE
+.DS_Store
+.idea/
+.vscode/
+*.iml
+*.swp
+*.swo
+
+# Archivos de configuración local
+*.local
+.env
+.env.local
+.env.development
+.env.test
+.env.production
+
+# Archivos de dependencias
+node_modules/
+bower_components/
+jspm_packages/
+*.git
