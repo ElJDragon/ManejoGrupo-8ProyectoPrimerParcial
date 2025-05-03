@@ -37,36 +37,122 @@
                 </div>
             </div>
         </nav>
-        
-        <section class="page-section about-heading">
-            <div class="container">
-                <img class="img-fluid rounded about-heading-img mb-3 mb-lg-0" src="assets/img/about.jpg" alt="..." />
-                <div class="about-heading-content">
-                    <div class="row">
-                        <div class="col-xl-9 col-lg-10 mx-auto">
-                            <div class="bg-faded rounded p-5">
-                                <h2 class="section-heading mb-4">
-                                    <span class="section-heading-upper">Strong Coffee, Strong Roots</span>
-                                    <span class="section-heading-lower">About Our Cafe</span>
-                                </h2>
-                                <p>Founded in 1987 by the Hernandez brothers, our establishment has been serving up rich coffee sourced from artisan farmers in various regions of South and Central America. We are dedicated to travelling the world, finding the best coffee, and bringing back to you here in our cafe.</p>
-                                <p class="mb-0">
-                                    We guarantee that you will fall in
-                                    <em>lust</em>
-                                    with our decadent blends the moment you walk inside until you finish your last sip. Join us for your daily routine, an outing with friends, or simply just to enjoy some alone time.
-                                </p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+        <head>
+            <meta charset="UTF-8">
+            <meta name="viewport" content="width=device-width, initial-scale=1.0">
+            <title>Producto Andino</title>
+            <style>
+              body {
+                font-family: Arial, sans-serif;
+                padding: 20px;
+                background-color: #f7dfc4;
+                color: #000;
+              }
+          
+              .producto {
+                display: flex;
+                align-items: center;
+                background-color: #fff;
+                border: 1px solid #ccc;
+                padding: 20px;
+                max-width: 600px;
+                margin: 0 auto;
+                border-radius: 8px;
+                box-shadow: 2px 2px 8px rgba(0,0,0,0.1);
+              }
+          
+              .producto img {
+                width: 200px;
+                height: auto;
+                margin-right: 20px;
+                border-radius: 4px;
+                object-fit: cover;
+              }
+          
+              .detalle {
+                flex-grow: 1;
+              }
+          
+              .detalle p {
+                margin: 12px 0;
+                font-size: 16px;
+              }
+          
+              .cantidad {
+                display: flex;
+                align-items: center;
+                margin: 15px 0;
+              }
+          
+              .cantidad button {
+                width: 30px;
+                height: 30px;
+                background-color: #f7dfc4;
+                border: 1px solid #ccc;
+                font-size: 16px;
+                cursor: pointer;
+                border-radius: 4px;
+              }
+          
+              .cantidad input {
+                width: 50px;
+                height: 28px;
+                text-align: center;
+                margin: 0 10px;
+                border: 1px solid #ccc;
+                border-radius: 4px;
+              }
+          
+              .comprar {
+                background-color: #8b5a2b; /* Café oscuro */
+                color: white;
+                border: none;
+                padding: 10px 20px;
+                font-size: 16px;
+                cursor: pointer;
+                border-radius: 4px;
+                transition: background-color 0.3s;
+              }
+          
+              .comprar:hover {
+                background-color: #6d4a2a; /* Café más oscuro al pasar el mouse */
+              }
+            </style>
+          </head>
+          <body>
+          
+          <div class="producto">
+            <img src="assets/img/about.jpg" alt="Quinua Andina">
+            <div class="detalle">
+              <p><strong>Precio por libra :</strong> $5.00</p>
+              
+              <div class="cantidad">
+                <button onclick="cambiarCantidad(-1)">-</button>
+                <input type="number" id="cantidad" value="1" min="1">
+                <button onclick="cambiarCantidad(1)">+</button>
+              </div>
+          
+              <p><strong>Costo de envío:</strong> $2.00</p>
+              <button class="comprar" onclick="comprar()">Comprar</button>
             </div>
-        </section>
-        <footer class="footer text-faded text-center py-5">
-            <div class="container"><p class="m-0 small">Copyright &copy; Your Website 2023</p></div>
-        </footer>
-        <!-- Bootstrap core JS-->
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
-        <!-- Core theme JS-->
-        <script src="js/scripts.js"></script>
-    </body>
+          </div>
+          
+          <script>
+            function cambiarCantidad(valor) {
+              const input = document.getElementById('cantidad');
+              let nuevaCantidad = parseInt(input.value) + valor;
+              if (nuevaCantidad < 1) nuevaCantidad = 1;
+              input.value = nuevaCantidad;
+            }
+          
+            function comprar() {
+              const cantidad = document.getElementById('cantidad').value;
+              alert(`¡Compra realizada! cantidad de libras: ${cantidad}. Gracias por su pedido.`);
+            }
+          </script>
+          
+          </body>
+        
+        
+        
 </html>
