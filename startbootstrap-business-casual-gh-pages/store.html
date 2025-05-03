@@ -27,11 +27,11 @@
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul class="navbar-nav mx-auto">
-                        <li class="nav-item px-lg-4"><a class="nav-link text-uppercase" href="index.html">Home</a></li>
-                        <li class="nav-item px-lg-4"><a class="nav-link text-uppercase" href="about.html">About</a></li>
-                        <li class="nav-item px-lg-4"><a class="nav-link text-uppercase" href="products.html">Products</a></li>
-                        <li class="nav-item px-lg-4"><a class="nav-link text-uppercase" href="store.html">Store</a></li>
-                        <li class="nav-item px-lg-4"><a class="nav-link text-uppercase" href="../startbootstrap-new-age-gh-pages/index.html">MovilApp</a></li>
+                        <li class="nav-item px-lg-4"><a class="nav-link text-uppercase" href="index.html">Inicio</a></li>
+                        <li class="nav-item px-lg-4"><a class="nav-link text-uppercase" href="about.html">Nosotros</a></li>
+                        <li class="nav-item px-lg-4"><a class="nav-link text-uppercase" href="products.html">Productos</a></li>
+                        <li class="nav-item px-lg-4"><a class="nav-link text-uppercase" href="store.html">Tienda</a></li>
+                        <li class="nav-item px-lg-4"><a class="nav-link text-uppercase" href="../startbootstrap-new-age-gh-pages/index.html">App Móvil</a></li>
 
                     </ul>
                 </div>
@@ -40,7 +40,7 @@
         <head>
             <meta charset="UTF-8">
             <meta name="viewport" content="width=device-width, initial-scale=1.0">
-            <title>Producto Andino</title>
+            <title>Cafés Andinos</title>
             <style>
               body {
                 font-family: Arial, sans-serif;
@@ -49,32 +49,38 @@
                 color: #000;
               }
           
+              .contenedor-productos {
+                display: grid;
+                grid-template-columns: repeat(auto-fill, minmax(600px, 1fr));
+                gap: 25px;
+                max-width: 1300px;
+                margin: 0 auto;
+              }
+          
               .producto {
                 display: flex;
-                align-items: center;
                 background-color: #fff;
                 border: 1px solid #ccc;
                 padding: 20px;
-                max-width: 600px;
-                margin: 0 auto;
                 border-radius: 8px;
                 box-shadow: 2px 2px 8px rgba(0,0,0,0.1);
               }
           
               .producto img {
                 width: 200px;
-                height: auto;
-                margin-right: 20px;
-                border-radius: 4px;
+                height: 200px;
                 object-fit: cover;
+                border-radius: 4px;
+                margin-right: 20px;
               }
           
               .detalle {
-                flex-grow: 1;
+                flex: 1;
+                min-width: 0; /* Evita desbordamiento */
               }
           
               .detalle p {
-                margin: 12px 0;
+                margin: 10px 0;
                 font-size: 16px;
               }
           
@@ -89,9 +95,9 @@
                 height: 30px;
                 background-color: #f7dfc4;
                 border: 1px solid #ccc;
-                font-size: 16px;
                 cursor: pointer;
                 border-radius: 4px;
+                font-size: 16px;
               }
           
               .cantidad input {
@@ -104,7 +110,7 @@
               }
           
               .comprar {
-                background-color: #8b5a2b; /* Café oscuro */
+                background-color: #8b5a2b;
                 color: white;
                 border: none;
                 padding: 10px 20px;
@@ -112,47 +118,137 @@
                 cursor: pointer;
                 border-radius: 4px;
                 transition: background-color 0.3s;
+                width: 100%;
               }
           
               .comprar:hover {
-                background-color: #6d4a2a; /* Café más oscuro al pasar el mouse */
+                background-color: #6d4a2a;
+              }
+          
+              @media (max-width: 650px) {
+                .contenedor-productos {
+                  grid-template-columns: 1fr;
+                }
+                .producto {
+                  flex-direction: column;
+                }
+                .producto img {
+                  width: 100%;
+                  margin-right: 0;
+                  margin-bottom: 15px;
+                }
               }
             </style>
           </head>
           <body>
           
-          <div class="producto">
-            <img src="assets/img/about.jpg" alt="Quinua Andina">
-            <div class="detalle">
-              <p><strong>Precio por libra :</strong> $5.00</p>
-              
-              <div class="cantidad">
-                <button onclick="cambiarCantidad(-1)">-</button>
-                <input type="number" id="cantidad" value="1" min="1">
-                <button onclick="cambiarCantidad(1)">+</button>
+          <div class="contenedor-productos">
+            <!-- PLANTILLA PARA COPIAR (inicio) -->
+            <div class="producto">
+              <img src="assets/img/cafe_Raymi.jpg" alt="Café Raymi">
+              <div class="detalle">
+                <p><strong>Café Raymi</strong></p>
+                <p><strong>Precio por funda:</strong> $5.00</p>
+                <div class="cantidad">
+                  <button onclick="cambiarCantidad(this, -1)">-</button>
+                  <input type="number" value="1" min="1">
+                  <button onclick="cambiarCantidad(this, 1)">+</button>
+                </div>
+                <p><strong>Costo de envío:</strong> $2.00</p>
+                <button class="comprar" onclick="comprar(this)">Comprar</button>
               </div>
-          
-              <p><strong>Costo de envío:</strong> $2.00</p>
-              <button class="comprar" onclick="comprar()">Comprar</button>
             </div>
+            <!-- PLANTILLA PARA COPIAR (fin) -->
+          
+            <!-- Producto 2 -->
+            <div class="producto">
+              <img src="assets/img/Cafe-Grano-typica.jpg" alt="Café Típica">
+              <div class="detalle">
+                <p><strong>Café Típica</strong></p>
+                <p><strong>Precio por funda:</strong> $5.00</p>
+                <div class="cantidad">
+                  <button onclick="cambiarCantidad(this, -1)">-</button>
+                  <input type="number" value="1" min="1">
+                  <button onclick="cambiarCantidad(this, 1)">+</button>
+                </div>
+                <p><strong>Costo de envío:</strong> $2.00</p>
+                <button class="comprar" onclick="comprar(this)">Comprar</button>
+              </div>
+            </div>
+          
+            <!-- Producto 3 -->
+            <div class="producto">
+              <img src="assets/img/cafe_andino.jpg" alt="Café Andino">
+              <div class="detalle">
+                <p><strong>Café Andino</strong></p>
+                <p><strong>Precio por funda:</strong> $6.00</p>
+                <div class="cantidad">
+                  <button onclick="cambiarCantidad(this, -1)">-</button>
+                  <input type="number" value="1" min="1">
+                  <button onclick="cambiarCantidad(this, 1)">+</button>
+                </div>
+                <p><strong>Costo de envío:</strong> $2.50</p>
+                <button class="comprar" onclick="comprar(this)">Comprar</button>
+              </div>
+            </div>
+          
+            <!-- Producto 4 -->
+            <div class="producto">
+              <img src="assets/img/cafe_andino.jpg" alt="Café Lagano">
+              <div class="detalle">
+                <p><strong>Café Lagano</strong></p>
+                <p><strong>Precio por funda:</strong> $6.00</p>
+                <div class="cantidad">
+                  <button onclick="cambiarCantidad(this, -1)">-</button>
+                  <input type="number" value="1" min="1">
+                  <button onclick="cambiarCantidad(this, 1)">+</button>
+                </div>
+                <p><strong>Costo de envío:</strong> $2.50</p>
+                <button class="comprar" onclick="comprar(this)">Comprar</button>
+              </div>
+            </div>
+            <!-- Producto 5 -->
+            <div class="producto">
+                <img src="assets/img/cafe_andino.jpg" alt="Café Lagano">
+                <div class="detalle">
+                  <p><strong>Café Lagano</strong></p>
+                  <p><strong>Precio por funda:</strong> $6.00</p>
+                  <div class="cantidad">
+                    <button onclick="cambiarCantidad(this, -1)">-</button>
+                    <input type="number" value="1" min="1">
+                    <button onclick="cambiarCantidad(this, 1)">+</button>
+                  </div>
+                  <p><strong>Costo de envío:</strong> $2.50</p>
+                  <button class="comprar" onclick="comprar(this)">Comprar</button>
+                </div>
+              </div>
+
           </div>
+
+          
           
           <script>
-            function cambiarCantidad(valor) {
-              const input = document.getElementById('cantidad');
+            function cambiarCantidad(boton, valor) {
+              const contenedor = boton.parentElement;
+              const input = contenedor.querySelector('input');
               let nuevaCantidad = parseInt(input.value) + valor;
               if (nuevaCantidad < 1) nuevaCantidad = 1;
               input.value = nuevaCantidad;
             }
           
-            function comprar() {
-              const cantidad = document.getElementById('cantidad').value;
-              alert(`¡Compra realizada! cantidad de libras: ${cantidad}. Gracias por su pedido.`);
+            function comprar(boton) {
+              const producto = boton.closest('.producto');
+              const nombre = producto.querySelector('.detalle p strong').textContent;
+              const cantidad = producto.querySelector('.cantidad input').value;
+              const precio = producto.querySelector('.detalle p:nth-of-type(2)').textContent.split('$')[1];
+              const envio = producto.querySelector('.detalle p:nth-of-type(4)').textContent.split('$')[1];
+              
+              const total = (parseFloat(precio) * parseInt(cantidad) + parseFloat(envio)).toFixed(2);
+              
+              alert(`✅ Compra confirmada:\n\n• Producto: ${nombre}\n• Cantidad: ${cantidad} funda(s)\n• Total a pagar: $${total}`);
             }
           </script>
           
           </body>
-        
-        
         
 </html>
