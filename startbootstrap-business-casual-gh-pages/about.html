@@ -13,7 +13,26 @@
         <!-- Core theme CSS (includes Bootstrap)-->
         <link href="css/styles.css" rel="stylesheet" />
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-
+        <style>
+            #btnSubir {
+                position: fixed;
+                bottom: 30px;
+                right: 30px;
+                z-index: 100;
+                background-color: #CA3B3B;
+                color: white;
+                border: none;
+                padding: 10px 15px;
+                border-radius: 50%;
+                font-size: 20px;
+                display: none;
+                box-shadow: 0 4px 6px rgba(0,0,0,0.3);
+                cursor: pointer;
+            }
+            #btnSubir:hover {
+                background-color: #a53030;
+            }
+        </style>
     </head>
     <body>
         <header>
@@ -34,7 +53,6 @@
                         <li class="nav-item px-lg-4"><a class="nav-link text-uppercase" href="products.html">Productos</a></li>
                         <li class="nav-item px-lg-4"><a class="nav-link text-uppercase" href="store.html">Tienda</a></li>
                         <li class="nav-item px-lg-4"><a class="nav-link text-uppercase" href="../startbootstrap-new-age-gh-pages/index.html">App Móvil</a></li>
-
                     </ul>
                 </div>
             </div>
@@ -61,6 +79,10 @@
                 </div>
             </div>
         </section>
+
+        <!-- Botón para subir arriba -->
+        <button id="btnSubir" title="Subir"><i class="fas fa-arrow-up"></i></button>
+
         <footer class="footer text-faded text-center py-5">
             <div class="container">
                 <div class="row">
@@ -84,8 +106,22 @@
                 <p class="m-0 small mt-4">Copyright &copy; Dulce Aroma 2025</p>
             </div>
         </footer>
+
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
         <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
         <script src="js/scripts.js"></script>
+        <script>
+            const btnSubir = document.getElementById("btnSubir");
+            window.onscroll = function () {
+                if (document.body.scrollTop > 100 || document.documentElement.scrollTop > 100) {
+                    btnSubir.style.display = "block";
+                } else {
+                    btnSubir.style.display = "none";
+                }
+            };
+            btnSubir.addEventListener("click", function () {
+                window.scrollTo({ top: 0, behavior: "smooth" });
+            });
+        </script>
     </body>
 </html>
